@@ -1,4 +1,3 @@
-
 '''
 Java wrapper
 ============
@@ -99,12 +98,8 @@ include "jnius_compat.pxi"
 include "jni.pxi"
 include "config.pxi"
 
-IF JNIUS_PLATFORM == "android":
-    include "jnius_jvm_android.pxi"
-ELIF JNIUS_PLATFORM == "win32":
-    include "jnius_jvm_desktop.pxi"
-ELSE:
-    include "jnius_jvm_dlopen.pxi"
+# Platform-specific JVM loader for Android
+include "jnius_jvm_android.pxi"
 
 # from Cython 3.0, in the MetaJavaClass, this is accessed as _JavaClass__cls_storage
 # see https://cython.readthedocs.io/en/latest/src/userguide/migrating_to_cy30.html#class-private-name-mangling
